@@ -1,0 +1,30 @@
+name: Ejercicio2
+
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - "hangman-front/**"
+  workflow_dispatch:
+    
+  pull_request:
+    branches: [ main ] 
+    paths: [ 'hangman-front/**' ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build docker image
+        working-directory: ./hangman-front
+        env:
+          DOCKER_USER: "dmd10"
+          DOCKER_REPOSITORY: "hangman-api"
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASWORD }}
+        run: | 
+          echo $DOCKER_PASSWORD | docker loging ghcr.io -u $DOCKER_USER --password-stdin
+          image=$DOCKER_USER/$DOCKER_REPOSITORY:$(date +%s)
+          docker build . --file Dockerfile --tag $image
+          docker push $image
