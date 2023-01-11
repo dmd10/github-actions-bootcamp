@@ -5,10 +5,10 @@ on:
     branches:
       - "main"
     paths:
-      - "hangman-api/**"
+      - "hangman-front/**"
   pull_request:
     branches: [ main ] 
-    paths: [ 'hangman-api/**' ]
+    paths: [ 'hangman-front/**' ]
 
 jobs:
 #  audit:
@@ -36,7 +36,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Build and Build Test 
-        working-directory: ./hangman-api
+        working-directory: ./hangman-front
         run: |
           npm ci 
           npm run build --if-present
