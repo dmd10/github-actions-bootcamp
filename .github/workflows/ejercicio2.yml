@@ -25,6 +25,6 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASWORD }}
         run: | 
           echo $DOCKER_PASSWORD | docker login ghcr.io -u $DOCKER_USER --password-stdin
-          image=$DOCKER_USER/$DOCKER_REPOSITORY:$(date +%s)
-          docker build . --file Dockerfile --tag $image
-          docker push $image
+        #  image=$DOCKER_USER/$DOCKER_REPOSITORY:$(date +%s)
+        #  docker build . --file Dockerfile --tag $image
+        #  docker push $image 
