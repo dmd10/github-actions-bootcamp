@@ -17,15 +17,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Build docker image
+      - name: Login to ghcr.io
+        uses: docker/login-action@v1
+        with:
+          registry: ghrc.io
+          username: "dmd10"
+          password: ${{ secrets.DOCKER_PASSWORD }}
         working-directory: ./hangman-front
         env:
           DOCKER_USER: "dmd10"
           DOCKER_REPOSITORY: "hangman-api"
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
-          echo $DOCKER_PASSWORD | docker login ghcr.io -u $DOCKER_USER --password-stdin
+          image=ghcr.io/$DOCKER_USER/$DOCKER_REPOSITORY:$(date +%s)
+          docker build . --file Dockerfile --tag $image
           docker push $image  
-        #  image=ghcr.io/$DOCKER_USER/$DOCKER_REPOSITORY:$(date +%s)
-        #  docker build . --file Dockerfile --tag $image
+
 
