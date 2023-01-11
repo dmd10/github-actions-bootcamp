@@ -24,7 +24,7 @@ jobs:
           DOCKER_REPOSITORY: "hangman-api"
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASWORD }}
         run: | 
-          echo $DOCKER_PASSWORD | docker loging ghcr.io -u $DOCKER_USER --password-stdin
+          echo $DOCKER_PASSWORD | docker login ghcr.io -u $DOCKER_USER --password-stdin
           image=$DOCKER_USER/$DOCKER_REPOSITORY:$(date +%s)
           docker build . --file Dockerfile --tag $image
           docker push $image
