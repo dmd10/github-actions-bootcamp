@@ -22,7 +22,7 @@ jobs:
         env:
           DOCKER_USER: "dmd10"
           DOCKER_REPOSITORY: "hangman-api"
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASWORD }}
+          DOCKER_PASSWORD: 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
         run: | 
           echo $DOCKER_PASSWORD | docker login ghcr.io -u $DOCKER_USER --password-stdin
         #  image=$DOCKER_USER/$DOCKER_REPOSITORY:$(date +%s)
