@@ -22,9 +22,8 @@ jobs:
         env:
           DOCKER_USER: "dmd10"
           DOCKER_REPOSITORY: "hangman-api"
-          DOCKER_PASSWORD: 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
+          DOCKER_PASSWORD: 
         run: | 
-          docker login ghcr.io -u dmd10 -p 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
-        #  image=$DOCKER_USER/$DOCKER_REPOSITORY:$(date +%s)
-        #  docker build . --file Dockerfile --tag $image
-        #  docker push $image 
+          image=$DOCKER_USER/$DOCKER_REPOSITORY:$(date +%s)
+          docker build . --file Dockerfile --tag $image
+          docker push $image 
