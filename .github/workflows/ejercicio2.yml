@@ -11,7 +11,7 @@ jobs:
         with:
           registry: ghcr.io
           username: "dmd10"
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: "JVMWxzLrsRp8jQYVt_qu"
           
       - name: Build docker image
         working-directory: ./hangman-front
