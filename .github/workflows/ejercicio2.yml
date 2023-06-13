@@ -11,9 +11,9 @@ jobs:
     - name: Build and Push Docker Image
       working-directory: ./hangman-front
       env:
-        DOCKER_USER: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_USER: "dmd10"
         DOCKER_REPOSITORY: "hangman-front"
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        DOCKER_PASSWORD: "*8auV!T.<T)H/E->Z]sErH'6M;sV%qF7H!s/mB57[o0h?KbtRt"
       run: | 
         echo $DOCKER_USER $DOCKER_PASSWORD
         echo $DOCKER_PASSWORD | docker login --username $DOCKER_USER --password-stdin
