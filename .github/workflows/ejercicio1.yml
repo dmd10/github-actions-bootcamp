@@ -1,5 +1,4 @@
 name: Ejercicio1
-
 on:
   pull_request:
     branches: [ main ] 
