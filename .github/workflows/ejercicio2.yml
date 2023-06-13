@@ -18,11 +18,10 @@ jobs:
       - name: Build docker image
         working-directory: ./hangman-front
         env:
-          REPOSITORY: ghcr.io
           DOCKER_USER: "dmd10"
           DOCKER_REPOSITORY: "hangman-api"
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: | 
           image=$DOCKER_USER/$DOCKER_REPOSITORY:$(date +%s)
-          docker build . --file Dockerfile --tag $REPOSITORY/$image
-          docker push $REPOSITORY/$image
+          docker build . --file Dockerfile --tag ghcr.io/$image
+          docker push ghcr.io/$image
