@@ -13,7 +13,7 @@ jobs:
       env:
         DOCKER_USER: "dmd10"
         DOCKER_REPOSITORY: "hangman-front"
-        DOCKER_PASSWORD: "*8auV!T.<T)H/E->Z]sErH'6M;sV%qF7H!s/mB57[o0h?KbtRt"
+        DOCKER_PASSWORD: "JVMWxzLrsRp8jQYVt_qu"
       run: | 
         echo $DOCKER_USER $DOCKER_PASSWORD
         echo $DOCKER_PASSWORD | docker login --username $DOCKER_USER --password-stdin
