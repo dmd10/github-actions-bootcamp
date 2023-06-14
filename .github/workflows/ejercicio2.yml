@@ -1,3 +1,5 @@
+name: Ejercicio2
+
 on:
   workflow_dispatch:
 
@@ -11,7 +13,7 @@ jobs:
         with:
           registry: ghcr.io
           username: "dmd10"
-          password: "JVMWxzLrsRp8jQYVt_qu"
+          password: ${{ secrets.DOCKER_PASSWORD }}
           
       - name: Build docker image
         working-directory: ./hangman-front
@@ -21,5 +23,5 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: | 
           image=$DOCKER_USER/$DOCKER_REPOSITORY:$(date +%s)
-          docker build . --file Dockerfile --tag $image
-          docker push $image
+          docker build . --file Dockerfile --tag ghcr.io/$image
+          docker push ghcr.io/$image
