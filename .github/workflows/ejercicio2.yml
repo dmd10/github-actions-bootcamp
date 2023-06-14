@@ -7,21 +7,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.DOCKER_PASS }}
-          
+      - uses: actions/checkout@v3          
       - name: Build docker image
         working-directory: ./hangman-front
         env:
           DOCKER_USER: "dmd10"
           DOCKER_REPOSITORY: "hangman-api"
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASS }}
         run: | 
           image=$DOCKER_USER/$DOCKER_REPOSITORY:$(date +%s)
+          docker login ghcr.io -u $DOCKER_USER -p $DOCKER_PASSWORD
           docker build . --file Dockerfile --tag ghcr.io/$image
           docker push ghcr.io/$image
