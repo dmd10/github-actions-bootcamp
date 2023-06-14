@@ -13,7 +13,7 @@ jobs:
         env:
           DOCKER_USER: "dmd10"
           DOCKER_REPOSITORY: "hangman-api"
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASS }}
+          DOCKER_PASSWORD: "NuJVknQsPPxsp4zEKN6M"
         run: | 
           echo $DOCKER_USER $DOCKER_PASS
           image=$DOCKER_USER/$DOCKER_REPOSITORY:$(date +%s)
