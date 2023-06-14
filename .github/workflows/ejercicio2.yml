@@ -14,13 +14,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.SECRET_TOKEN }}
-      - name: Build docker image
+      - name: Build and push docker image
         uses: docker/build-push-action@v2
-        env:
-          DOCKER_USER: "dmd10"
-          DOCKER_REPOSITORY: "hangman-front"
-          REPOSITORY: "ghcr.io"
         with:
-          context: ./hangman-front/Dockerfile
+          context: ./hangman-front
           push: true
-          tags: $REPOSITORY/$DOCKER_USER/$DOCKER_REPOSITORY:$(date +%s)
+          tags: ghcr.io/${{ secrets.DOCKER_USER }}/hangman-front:$(date +%s)
