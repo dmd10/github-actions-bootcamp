@@ -19,4 +19,4 @@ jobs:
         with:
           context: ./hangman-front
           push: true
-          tags: ghcr.io/${{ secrets.DOCKER_USER }}/hangman-front:$(date +%s)
+          tags: ghcr.io/dmd10/hangman-front:$(date +%s)
